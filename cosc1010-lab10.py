@@ -34,3 +34,24 @@ def get_hash(to_hash):
 # Hash each individual password and compare it against the stored hash.
 # - When you find the match, print the plaintext version of the password.
 # - End your loop.
+
+try:
+    path = Path('rockyou.txt')
+    contents = path.read_text()
+
+except:
+    print(f'Error occured')
+else:
+    lines = contents.splitlines()
+
+try:
+    path_hash = Path('hash')
+    contents_hash = path_hash.read_text()
+except:
+    print(f'Error Occured')
+else:
+    hash = path_hash.read_text()
+    for password in lines:
+        if get_hash(password) == contents_hash:
+            print(f'The password is: {password}')
+            break
